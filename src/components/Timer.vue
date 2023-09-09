@@ -1,25 +1,20 @@
 <template>
   <div class="container">
     <span class="digital">{{ countDownToMinSec }}</span>
-    <p>{{ name }}</p>
-    <button
-      @click="
-        this.startFlag = true;
-        countDownStart();
-      "
-    >
-      开始
-    </button>
-    <button @click="countDownPause">暂停</button>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    time: {
+      type: Number,
+      default: 5 * 60 * 1000,
+    },
+  },
   data() {
     return {
-      countDown: 5 * 60 * 1000,
-      name: "总时间",
+      countDown: 0,
       startFlag: false,
     };
   },
@@ -28,19 +23,27 @@ export default {
     countDownToMinSec() {
       const min = Math.floor(this.countDown / 1000 / 60);
       const sec =
-        Math.floor((this.countDown / 1000) % 60) == 0
-          ? "00"
+        Math.floor((this.countDown / 1000) % 60) < 10
+          ? "0" + Math.floor((this.countDown / 1000) % 60)
           : Math.floor((this.countDown / 1000) % 60);
       return `${min}:${sec}`;
     },
   },
+  mounted() {
+    this.countDown = this.time;
+  },
   methods: {
+    start() {
+      if (this.startFlag) return;
+      this.startFlag = true;
+      this.countDownStart();
+    },
     countDownStart() {
-      this.countDown -= 1000;
+      this.countDown -= 100;
       if (this.countDown > 0 && this.startFlag) {
         setTimeout(() => {
           this.countDownStart();
-        }, 1000);
+        }, 100);
       }
     },
     countDownPause() {
@@ -54,5 +57,6 @@ export default {
 .digital {
   font-size: 200px;
   font-family: "DSDIGI";
+  color: #fff;
 }
 </style>
