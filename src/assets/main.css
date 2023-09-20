@@ -1,11 +1,13 @@
 @import "./base.css";
-
-#app {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* #app {
   margin: 0 auto;
   padding: 2rem;
 
   font-weight: normal;
-}
+} */
 
 /* @media (min-width: 1024px) {
   body {

@@ -7,14 +7,13 @@
 <script>
 export default {
   props: {
-    time: {
+    countDown: {
       type: Number,
       default: 5 * 60 * 1000,
     },
   },
   data() {
     return {
-      countDown: 0,
       startFlag: false,
     };
   },

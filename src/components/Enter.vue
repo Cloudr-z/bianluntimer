@@ -17,6 +17,7 @@
       <div class="toolbar-panel">
         <div class="toolbar-item" @click="addList">新增</div>
         <div class="toolbar-item" @click="slide(1)">开始</div>
+        <t-button>确定</t-button>
       </div>
     </div>
     <div class="slide-panel" v-if="count > 0">
