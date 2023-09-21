@@ -102,7 +102,7 @@
           class="w-full m-1 rounded-md h-14 border-2 border-teal-500 border-dashed"
         >
           <div
-            @click="addList"
+            @click="jumpSilde"
             class="text-zinc-800 flex justify-center items-center text-2xl border-teal-700 h-full"
           >
             开始计时
@@ -221,6 +221,9 @@ export default {
         });
         this.steps[index].showConfig = true;
       }
+    },
+    jumpSilde() {
+      this.$router.push("/enter");
     },
   },
   mounted() {

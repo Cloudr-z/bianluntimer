@@ -1,10 +1,9 @@
 <script setup>
 import Timer from "./components/Timer.vue";
-import Enter from "./components/Enter2.vue";
+import Enter from "./components/Enter.vue";
 import Config from "./components/Config.vue";
 import DualTimer from "./components/DualTimer.vue";
 import SlideCard from "./components/SlideCard.vue";
-import test from "./components/test.vue";
 </script>
 
 <template>
