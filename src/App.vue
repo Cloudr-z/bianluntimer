@@ -7,10 +7,10 @@ import SlideCard from "./components/SlideCard.vue";
 </script>
 
 <template>
+  <router-view></router-view>
   <!-- <Timer></Timer> -->
   <!-- <Enter></Enter> -->
   <!-- <test> </test> -->
-  <Config></Config>
   <!-- <Config></Config> -->
   <!-- <DualTimer></DualTimer> -->
   <!-- <SlideCard></SlideCard> -->

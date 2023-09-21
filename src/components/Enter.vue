@@ -20,10 +20,10 @@ export default {
     //   type: Object,
     //   default: () => ({}),
     // },
-    steps: {
-      type: Array,
-      default: () => [],
-    },
+    // steps: {
+    //   type: Array,
+    //   default: () => [],
+    // },
   },
   data() {
     return {
@@ -32,7 +32,7 @@ export default {
         debateTeam1: "xxx队",
         debateTeam2: "yyy队",
       },
-
+      steps: [],
       index: 0,
     };
   },
@@ -52,6 +52,9 @@ export default {
       dict.none = SlideCard;
       return dict[this.steps[this.index].type];
     },
+  },
+  mounted() {
+    this.steps = this.$route.params.steps;
   },
 };
 </script>

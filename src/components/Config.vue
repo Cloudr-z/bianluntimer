@@ -166,7 +166,7 @@ export default {
       steps: [
         {
           id: 1,
-          type: "质询",
+          type: "dual",
           name: "立论",
           u1: "正方一辩",
           u2: "反方一辩",
@@ -175,21 +175,21 @@ export default {
         },
         {
           id: 2,
-          type: "质询",
+          type: "single",
           name: "立论",
           u1: "正方一辩",
           time1: 180,
         },
         {
           id: 3,
-          type: "质询",
+          type: "single",
           name: "立论",
           u1: "正方一辩",
           time1: 180,
         },
         {
           id: 4,
-          type: "质询",
+          type: "single",
           name: "立论",
           u1: "正方一辩",
           time1: 180,
@@ -223,7 +223,11 @@ export default {
       }
     },
     jumpSilde() {
-      this.$router.push("/enter");
+      this.$router.push({
+        name: "/enter",
+        param: { steps: this.steps },
+        git,
+      });
     },
   },
   mounted() {
