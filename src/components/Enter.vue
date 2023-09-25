@@ -13,8 +13,12 @@
 <script>
 import SlideCardDual from "./SlideCardDual.vue";
 import SlideCard from "./SlideCard.vue";
-
+import { setupConfig } from "../store/config.js";
 export default {
+  setup() {
+    const configs = setupConfig();
+    return { configs };
+  },
   props: {
     // basicInfo: {
     //   type: Object,
@@ -32,8 +36,8 @@ export default {
         debateTeam1: "xxx队",
         debateTeam2: "yyy队",
       },
-      steps: [],
       index: 0,
+      steps: [],
     };
   },
   components: { SlideCard, SlideCardDual },
@@ -50,11 +54,16 @@ export default {
       dict.dual = SlideCardDual;
       dict.single = SlideCard;
       dict.none = SlideCard;
-      return dict[this.steps[this.index].type];
+      return (
+        (this.steps.length > this.index && dict[this.steps[this.index].type]) ||
+        "div"
+      );
     },
   },
   mounted() {
-    this.steps = this.$route.params.steps;
+    let uuid = this.$route.params.uuid;
+    this.steps = this.configs.getConfigs(uuid);
+    console.log(this.steps);
   },
 };
 </script>

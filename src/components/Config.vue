@@ -115,7 +115,13 @@
 
 <script>
 import draggable from "vuedraggable";
+import { setupConfig } from "../store/config.js";
+
 export default {
+  setup() {
+    const configs = setupConfig();
+    return { configs };
+  },
   data() {
     return {
       debateType: [
@@ -223,10 +229,10 @@ export default {
       }
     },
     jumpSilde() {
+      let uuid = this.configs.addConfig(this.steps);
+      console.log(uuid);
       this.$router.push({
-        name: "/enter",
-        param: { steps: this.steps },
-        git,
+        path: `/enter/${uuid}`,
       });
     },
   },
